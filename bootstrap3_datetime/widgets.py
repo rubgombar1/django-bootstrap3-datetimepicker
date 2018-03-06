@@ -3,12 +3,47 @@ import json
 
 from django.forms.utils import flatatt
 from django.forms.widgets import DateTimeInput
+from django.utils import translation
 from django.utils.safestring import mark_safe
 from django.utils.html import conditional_escape
 from django.utils.encoding import force_text
 
 
 class DateTimePicker(DateTimeInput):
+    class Media:
+        class JsFiles(object):
+            def __iter__(self):
+                yield 'bootstrap3_datetime/js/moment.min.js'
+                yield 'bootstrap3_datetime/js/bootstrap-datetimepicker.min.js'
+                lang = translation.get_language()
+                if lang:
+                    lang = lang.lower()
+                    #There is language name that length>2 *or* contains uppercase.
+                    lang_map = {
+                        'ar-ma': 'ar-ma',
+                        'en-au': 'en-au',
+                        'en-ca': 'en-ca',
+                        'en-gb': 'en-gb',
+                        'en-us': 'en-us',
+                        'fa-ir': 'fa-ir',
+                        'fr-ca': 'fr-ca',
+                        'ms-my': 'ms-my',
+                        'pt-br': 'bt-BR',
+                        'rs-latin': 'rs-latin',
+                        'tzm-la': 'tzm-la',
+                        'tzm': 'tzm',
+                        'zh-cn': 'zh-CN',
+                        'zh-tw': 'zh-TW',
+                        'zh-hk': 'zh-TW',
+                    }
+                    if len(lang) > 2:
+                        lang = lang_map.get(lang, 'en-us')
+                    if lang not in ('en', 'en-us'):
+                        yield 'bootstrap3_datetime/js/locales/bootstrap-datetimepicker.%s.js' % (lang)
+
+        js = JsFiles()
+        css = {'all': ('bootstrap3_datetime/css/bootstrap-datetimepicker.min.css',), }
+
     # http://momentjs.com/docs/#/parsing/string-format/
     # http://docs.python.org/2/library/datetime.html#strftime-strptime-behavior
     format_map = (
@@ -77,9 +112,9 @@ class DateTimePicker(DateTimeInput):
     def _format_value(self, value):
         """This function name was changed in Django 1.10 and removed in 2.0."""
         if hasattr(self, 'format_value'):
-            return self.format_value(value)
+            return super(DateTimePicker, self).format_value(value)
         else:
-            return self._format_value(value)
+            return super(DateTimePicker, self)._format_value(value)
 
     def render(self, name, value, attrs=None):
         if value is None:
