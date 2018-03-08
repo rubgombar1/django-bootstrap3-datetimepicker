@@ -11,9 +11,14 @@ it now has the following breaking changes:
 * bug/warning fixes
 * remove support for python 2.6 and associated clean up
 
+Changes from https://github.com/tutorcruncher/django-bootstrap3-datetimepicker
+* Include the original statics.
+* Fix error in the widget (infinite recursive)
+
+
 ## Install
 
-    pip install django-bootstrap3-datetimepicker-2
+    pip install -e git://github.com/rubgombar1/django-bootstrap3-datetimepicker.git@3.0.0#egg=django-bootstrap3-datetimepicker
 
 ## Example
 
