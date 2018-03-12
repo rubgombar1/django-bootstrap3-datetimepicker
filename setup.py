@@ -12,7 +12,7 @@ setup(
     maintainer="Ruben Gomez",
     maintainer_email="rubgomez93@gmail.com",
     include_package_data=True,
-    version='3.0.0',
+    version='3.0.1',
     description='Bootstrap3 compatible datetimepicker for Django projects.',
     long_description=long_description,
     author='Nakahara Kunihiko/Samuel Colvin',
