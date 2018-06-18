@@ -15,8 +15,8 @@ setup(
     version='3.0.2',
     description='Bootstrap3 compatible datetimepicker for Django projects.',
     long_description=long_description,
-    author='Nakahara Kunihiko/Samuel Colvin',
-    author_email='nakahara.kunihiko@gmail.com/s@muelcolvin.com',
+    author='Nakahara Kunihiko, Samuel Colvin',
+    author_email='nakahara.kunihiko@gmail.com, s@muelcolvin.com',
     url='https://github.com/rubgombar1/django-bootstrap3-datetimepicker',
     license='Apache License 2.0',
     classifiers=[
