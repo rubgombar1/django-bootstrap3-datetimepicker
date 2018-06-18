@@ -18,7 +18,7 @@ Changes from https://github.com/tutorcruncher/django-bootstrap3-datetimepicker
 
 ## Install
 
-    pip install -e git://github.com/rubgombar1/django-bootstrap3-datetimepicker.git@3.0.0#egg=django-bootstrap3-datetimepicker
+    pip install django-bootstrap3-datetimepicker-rubgomez93
 
 ## Example
 
